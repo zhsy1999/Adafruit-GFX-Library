@@ -395,6 +395,31 @@ void Adafruit_GFX::drawPentagram(int16_t x0, int16_t y0,
 	drawLine(xd, yd, xe, ye, color);
 }
 
+
+void Adafruit_GFX::drawmyZz(int16_t x0, int16_t y0,
+        int16_t r0, uint16_t color) {
+	int xa, ya;
+    int xb, yb;
+    int xc, yc;
+    int xd, yd;
+    int xe, ye;
+    xa = x0;
+    ya = y0 - r0;
+    xb = x0 - r0 * sin(PI / 180 * 72);
+    yb = y0 + r0 * -(cos(PI / 180 * 72));
+    xc = x0 - r0 * -(sin(PI / 180 * 36));
+    yc = y0 - r0 * -(cos(PI / 180 * 36));
+    xd = x0 + r0 * -(sin(PI / 180 * 36));
+    yd = y0 - r0 * -(cos(PI / 180 * 36));
+    xe = x0 + r0 * sin(PI / 180 * 72);
+    ye = y0 + r0 * -(cos(PI / 180 * 72));
+    drawLine(xa, ya, xc, yc, color);
+    drawLine(xa, ya, xd, yd, color);
+    drawLine(xb, yb, xc, yc, color);
+	drawLine(xb, yb, xe, ye, color);
+	drawLine(xd, yd, xe, ye, color);
+}
+
 // Draw a ellipse outline
 void Adafruit_GFX::drawEllipse(int16_t x1, int16_t y1, int16_t x2, int16_t y2, int16_t a, uint16_t color) {
     int16_t max_x = ((x1 > x2 ? x1 : x2) + a > 128 ? (x1 > x2 ? x1 : x2) + a : 128);
@@ -412,12 +437,17 @@ void Adafruit_GFX::drawEllipse(int16_t x1, int16_t y1, int16_t x2, int16_t y2, i
 
 
 // Draw a triangle
+                                    //h画四边形
 void Adafruit_GFX::drawTriangle(int16_t x0, int16_t y0,
-        int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint16_t color) {
-    drawLine(x0, y0, x1, y1, color);
-    drawLine(x1, y1, x2, y2, color);
-    drawLine(x2, y2, x0, y0, color);
+       int16_t x1, int16_t y1, int16_t x2, int16_t y2, uint16_t color) {
+   drawLine(x0, y0, x1, y1, color);
+   drawLine(x1, y1, x2, y2, color);
+   drawLine(x2, y2, x0, y0, color);
 }
+
+
+
+
 
 // Fill a triangle
 void Adafruit_GFX::fillTriangle(int16_t x0, int16_t y0,
